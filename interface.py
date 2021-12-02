@@ -1,22 +1,64 @@
 from datetime import datetime
+from checks import Controllo, Aggiungi
 
 scelta = input("cosa vuoi fare?\n a)prenotare campo\n b)controllare orari\n")
 
-if scelta == "b": #chiamare fz prenotare
+if scelta == "a": 
 
     nome = input("come ti chiami?")
     motivo = input("motivo della prenotazione?")
     
         
-    scelta_anno = input("anno")
-    scelta_mese = input ("mese")
-    scelta_giorno = input("giorno")
-    scelta_ora_inizio = input ("ora inizio")
-    scelta_minuto_inizio = input ("minuto inizio") 
-    scelta_ora_fine = input ("ora fine") 
-    scelta_minuto_fine = input ("minuto fine")
+    x=0
+    while x==0:    
+        try: 
+            x=1
+            scelta_anno = int(input("anno"))
+            scelta_mese = int(input ("mese"))
+            scelta_giorno = int(input("giorno"))
+            scelta_ora_inizio = int(input ("ora inizio"))
+            scelta_minuto_inizio = int(input ("minuto inizio")) 
+            scelta_ora_fine = int(input ("ora fine")) 
+            scelta_minuto_fine = int(input ("minuto fine"))
+           
+        except ValueError:
+            x=0
+            print("inserisci la data nel formato AAAA-MM-GG e l'ora nel formato HH-MM")
+           
+        
+        
+    iniziale= datetime(scelta_anno, scelta_mese, scelta_giorno, scelta_ora_inizio, scelta_minuto_inizio)
+    finale= datetime(scelta_anno, scelta_mese, scelta_giorno, scelta_ora_fine, scelta_minuto_fine)
     
-    d1= datetime.datetime(scelta_anno, scelta_mese, scelta_giorno, scelta_ora_inizio, scelta_minuto_inizio)
-    d2= datetime.datetime(scelta_anno, scelta_mese, scelta_giorno, scelta_ora_fine, scelta_minuto_fine)
+    x = Aggiungi(iniziale, finale, nome, motivo)
+    print(x)
     
+if scelta == "b":
     
+    x=0
+    while x==0:    
+        try: 
+            x=1
+            scelta_anno = int(input("anno"))
+            scelta_mese = int(input ("mese"))
+            scelta_giorno = int(input("giorno"))
+            scelta_ora_inizio = int(input ("ora inizio"))
+            scelta_minuto_inizio = int(input ("minuto inizio")) 
+            scelta_ora_fine = int(input ("ora fine")) 
+            scelta_minuto_fine = int(input ("minuto fine"))
+           
+        except ValueError:
+            x=0
+            print("inserisci la data nel formato AAAA-MM-GG e l'ora nel formato HH-MM")
+           
+        
+        
+    iniziale= datetime(scelta_anno, scelta_mese, scelta_giorno, scelta_ora_inizio, scelta_minuto_inizio)
+    finale= datetime(scelta_anno, scelta_mese, scelta_giorno, scelta_ora_fine, scelta_minuto_fine)
+    
+    x = Controllo(iniziale, finale)
+   
+    if x == True:
+        print("è libero")
+    else:
+        print ("non è libero")
