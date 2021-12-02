@@ -1,6 +1,6 @@
 from datetime import datetime
 from columnar import columnar
-#from databaser import prendicalendario
+from databaserbarabba import PrendiCalendario,AggiungiEventi
 
 def Controllo(inizio, fine):
     """
@@ -10,7 +10,7 @@ def Controllo(inizio, fine):
     bool
         True indica prenotazione possibile.
     """
-    Calendario = prendicalendario()  # Correggi questa linea
+    Calendario = PrendiCalendario()  # Correggi questa linea
     #Assumiamo che calendario sia ordinata in ordine cronologico
     for Event in Calendario:
         while Event[1]<=inizio: #salta eventi precedenti
@@ -32,21 +32,18 @@ def Aggiungi(inizio, fine, nome, motivo):
         DESCRIPTION.
 
     """
-     Calendario = prendicalendario()  # Correggi questa linea
+     Calendario = PrendiCalendario()  # Correggi questa linea
      if not Controllo(inizio, fine):
          return "Gli orari nei quai vuoi prenotare sono occupati, mi spiace"
      else:
          Calendario+=[inizio, fine, nome, motivo]
          Calendario=sorted(Calendario, key=lambda x: x[0])
+         AggiungiEventi(Calendario)
          return "Hai prenotato, congratulazioni"
 
         
 def StampaCalendario():
-    Calendario = prendicalendario()  # Correggi questa linea
+    Calendario = PrendiCalendario()  # Correggi questa linea
     for Evento in Calendario:
-        
-        
-        
-    
-    
+        pass
     

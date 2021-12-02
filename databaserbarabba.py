@@ -11,7 +11,8 @@ def PrendiCalendario():
             eventi.append((datetime.strptime(i[0], FORMAT), datetime.strptime(i[1], FORMAT), i[2], i[3]))
     return eventi
 
-def AggiungiEventi(evento):
-    with open(FILENAME, "a") as f:
-        f.write(",".join((evento[0].strftime(FORMAT),evento[2].strftime(FORMAT),evento[2],evento[3])) + "\n")
+def AggiungiEventi(calendario):
+    with open(FILENAME, "w") as f:
+        for evento in calendario:
+            f.write(",".join((evento[0].strftime(FORMAT),evento[2].strftime(FORMAT),evento[2],evento[3])) + "\n")
                 
