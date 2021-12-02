@@ -50,7 +50,6 @@ if scelta == "b":
         except ValueError:
             x=0
             print("inserisci la data nel formato AAAA-MM-GG e l'ora nel formato HH-MM")
-           
         
         
     iniziale= datetime(scelta_anno, scelta_mese, scelta_giorno, scelta_ora_inizio, scelta_minuto_inizio)
