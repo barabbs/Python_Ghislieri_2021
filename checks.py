@@ -1,5 +1,4 @@
 from datetime import datetime
-from columnar import columnar
 from databaserbarabba import PrendiCalendario,AggiungiEventi
 
 def Controllo(inizio, fine):
