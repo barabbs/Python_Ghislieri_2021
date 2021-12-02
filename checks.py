@@ -1,24 +1,52 @@
 from datetime import datetime
+from columnar import columnar
+#from databaser import prendicalendario
 
-def Controllo(inizio, fine, Calendario):
+def Controllo(inizio, fine):
+    """
+    inizio : datetime
+    fine : datetime 
+    -------
+    bool
+        True indica prenotazione possibile.
+    """
+    Calendario = prendicalendario()  # Correggi questa linea
+    #Assumiamo che calendario sia ordinata in ordine cronologico
     for Event in Calendario:
-        if not (fine<=Event[0] or inizio>=Event[1]):
+        while Event[1]<=inizio: #salta eventi precedenti
+            pass
+        if Event[0]>=fine: #controlla solo primo evento non precedente
+            return True
+        else:
             return False
-    return True
 
-inizio=datetime(2020,1,13)
-fine=datetime(2020,1,16)
-Calendario=[(datetime(2020,1,12),datetime(2020,1,17),"Pippo", "motivo")]
 
-print(Controllo(inizio, fine, Calendario))
+def Aggiungi(inizio, fine, nome, motivo):
+     """
+    inizio : datetime
+    fine : datetime
+    nome : string
+    motivo : string
+    -------
+    str
+        DESCRIPTION.
 
-def Aggiungi(inizio, fine, nome, motivo, Calendario):
-     if Controllo(inizio, fine, Calendario)==False:
-         return "Ah che dispiazere"
+    """
+     Calendario = prendicalendario()  # Correggi questa linea
+     if not Controllo(inizio, fine):
+         return "Gli orari nei quai vuoi prenotare sono occupati, mi spiace"
      else:
          Calendario+=[inizio, fine, nome, motivo]
-         Calendario=sorted(Calendario, key=lambda x,y: x[0]<y[0])
-         
-#def Stampa(Calendario):
+         Calendario=sorted(Calendario, key=lambda x: x[0])
+         return "Hai prenotato, congratulazioni"
+
+        
+def StampaCalendario():
+    Calendario = prendicalendario()  # Correggi questa linea
+    for Evento in Calendario:
+        
+        
+        
+    
     
     
