@@ -56,23 +56,23 @@ def AggiungiEventi(calendario):
 	
 
 
-inizio = datetime(2021, 2, 12, 13,45)
-fine = datetime(2021, 2, 12, 14,55)
-nome = 'PITUCCI'
-motivo = 'CRACK'
-tuplaesempio = (inizio, fine, nome, motivo)
+# inizio = datetime(2021, 2, 12, 13,45)
+# fine = datetime(2021, 2, 12, 14,55)
+# nome = 'PITUCCI'
+# motivo = 'CRACK'
+# tuplaesempio = (inizio, fine, nome, motivo)
 
-#print(data.year)
-#print(data.strftime(FORMAT))
+# #print(data.year)
+# #print(data.strftime(FORMAT))
 
-# AggiungiEventi([])
-AggiungiPrenotazione(tuplaesempio)
+# # AggiungiEventi([])
+# AggiungiPrenotazione(tuplaesempio)
 
-A = PrendiCalendario()
+# A = PrendiCalendario()
 
-# print(A)	
+# # print(A)	
 
-AggiungiEventi(A)
+# AggiungiEventi(A)
 
 
 
