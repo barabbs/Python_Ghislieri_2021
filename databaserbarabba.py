@@ -1,7 +1,7 @@
 from datetime import datetime
 
 FILENAME = "PrenotazioniBarabba.csv"
-FORMAT = "%m/%d/%Y %H:%M:%S"
+FORMAT = "%Y/%m/%d %H:%M:%S"
 
 def PrendiCalendario():
     eventi = list()
@@ -14,5 +14,5 @@ def PrendiCalendario():
 def AggiungiEventi(calendario):
     with open(FILENAME, "w") as f:
         for evento in calendario:
-            f.write(",".join((evento[0].strftime(FORMAT),evento[2].strftime(FORMAT),evento[2],evento[3])) + "\n")
+            f.write(",".join((evento[0].strftime(FORMAT),evento[1].strftime(FORMAT),evento[2],evento[3])) + "\n")
                 
