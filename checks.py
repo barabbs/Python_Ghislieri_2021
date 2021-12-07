@@ -18,6 +18,7 @@ def Controllo(inizio, fine):
             return True
         else:
             return False
+    return True
 
 
 def Aggiungi(inizio, fine, nome, motivo):
