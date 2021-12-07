@@ -4,7 +4,7 @@ from checks import Controllo, Aggiungi
 scelta = input("cosa vuoi fare?\n a)prenotare campo\n b)controllare orari\n")
 
 if scelta == "a": 
-
+    print("Per prenotare a cavallo di due giorni, fai due prenotazioni per i due giorni diversi")
     nome = input("come ti chiami?")
     motivo = input("motivo della prenotazione?")
     

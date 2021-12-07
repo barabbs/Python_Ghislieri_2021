@@ -1,5 +1,5 @@
 from datetime import datetime
-from databaserbarabba import PrendiCalendario,AggiungiEventi
+from databaser import PrendiCalendario,AggiungiEventi
 
 def Controllo(inizio, fine):
     """
@@ -11,15 +11,14 @@ def Controllo(inizio, fine):
     """
     Calendario = PrendiCalendario()  # Correggi questa linea
     #Assumiamo che calendario sia ordinata in ordine cronologico
-    for Event in Calendario:
-        while Event[1]<=inizio: #salta eventi precedenti
-            pass
-        if Event[0]>=fine: #controlla solo primo evento non precedente
-            return True
-        else:
+    for Evento in Calendario:
+        if Sovrapposizione(Evento[0] ,Evento[1], inizio, fine):
             return False
     return True
 
+def Sovrapposizione(ev_inizio, ev_fine, inizio, fine):
+    return not (ev_inizio>=fine or ev_fine<=inizio)
+    
 
 def Aggiungi(inizio, fine, nome, motivo):
      """
