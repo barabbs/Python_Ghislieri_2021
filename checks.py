@@ -18,6 +18,7 @@ def Controllo(inizio, fine):
             return True
         else:
             return False
+    return True
 
 
 def Aggiungi(inizio, fine, nome, motivo):
@@ -35,7 +36,7 @@ def Aggiungi(inizio, fine, nome, motivo):
      if not Controllo(inizio, fine):
          return "Gli orari nei quai vuoi prenotare sono occupati, mi spiace"
      else:
-         Calendario+=[inizio, fine, nome, motivo]
+         Calendario.append((inizio, fine, nome, motivo))
          Calendario=sorted(Calendario, key=lambda x: x[0])
          AggiungiEventi(Calendario)
          return "Hai prenotato, congratulazioni"
