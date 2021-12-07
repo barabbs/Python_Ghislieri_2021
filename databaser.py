@@ -8,7 +8,7 @@ FORMAT = "%Y/%m/%d %H:%M:%S"
 
 def PrendiCalendario():
     """restituisce una lista, con elementi le prenotazioni (in formato (datetime-datetime-str-str))"""
-    with open("Prenotazioni.csv", 'r') as csvfile:
+    with open("Prenotazioni.csv", 'rt') as csvfile:
         numrig = 0
         ans = []
         for row in csvfile.readlines():
@@ -22,7 +22,7 @@ def PrendiCalendario():
     return  ans
 
 def Creatabella(nomecsv):
-	with open(nomecsv, 'w') as csvfile:
+	with open(nomecsv, 'wt') as csvfile:
 		fieldnames = ['Inizio', 'Fine', 'Nome', 'Motivo']
 		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 		writer.writeheader()
@@ -35,7 +35,7 @@ def AggiungiPrenotazione(tup):
 	Fine = tup[1].strftime(FORMAT)
 	Nome = tup[2]
 	Motivo = tup[3]
-	with open(FILENAME, 'a') as csvfile:
+	with open(FILENAME, 'at') as csvfile:
 		fieldnames = ['Inizio', 'Fine', 'Nome', 'Motivo']
 		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 		writer.writerow({'Inizio': Inizio, 'Fine': Fine, 'Nome': Nome, 'Motivo': Motivo,})
