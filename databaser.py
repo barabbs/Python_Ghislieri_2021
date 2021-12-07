@@ -8,18 +8,21 @@ FORMAT = "%Y/%m/%d %H:%M:%S"
 
 def PrendiCalendario():
     """restituisce una lista, con elementi le prenotazioni (in formato (datetime-datetime-str-str))"""
-    with open("Prenotazioni.csv", 'rt') as csvfile:
-        numrig = 0
-        ans = []
-        for row in csvfile.readlines():
-            if numrig >0 :
-                a = row.strip().split(',')
-                # print(a)
-                a[0] = datetime.strptime(a[0], FORMAT)
-                a[1] = datetime.strptime(a[1], FORMAT)
-                ans.append(tuple(a))
-            numrig += 1
-    return  ans
+    try:
+        with open("Prenotazioni.csv", 'rt') as csvfile:
+            numrig = 0
+            ans = []
+            for row in csvfile.readlines():
+                if numrig >0 :
+                    a = row.strip().split(',')
+                    # print(a)
+                    a[0] = datetime.strptime(a[0], FORMAT)
+                    a[1] = datetime.strptime(a[1], FORMAT)
+                    ans.append(tuple(a))
+                numrig += 1
+        return  ans
+    except FileNotFoundError:
+        return []
 
 def Creatabella(nomecsv):
 	with open(nomecsv, 'wt') as csvfile:
