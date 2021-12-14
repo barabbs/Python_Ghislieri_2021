@@ -1,6 +1,7 @@
 from datetime import datetime
 from databaser import PrendiCalendario,AggiungiEventi
 
+
 def Controllo(inizio, fine):
     """
     inizio : datetime
@@ -9,8 +10,7 @@ def Controllo(inizio, fine):
     bool
         True indica prenotazione possibile.
     """
-    Calendario = PrendiCalendario()  # Correggi questa linea
-    #Assumiamo che calendario sia ordinata in ordine cronologico
+    Calendario = PrendiCalendario()  
     for Evento in Calendario:
         if Sovrapposizione(Evento[0] ,Evento[1], inizio, fine):
             return False
@@ -32,8 +32,12 @@ def Aggiungi(inizio, fine, nome, motivo):
 
     """
      Calendario = PrendiCalendario()  # Correggi questa linea
-     if not Controllo(inizio, fine):
+     
+     if inizio<datetime.now():
+         return "Hai inserito una data vecchia"
+     elif not Controllo(inizio, fine):
          return "Gli orari nei quai vuoi prenotare sono occupati, mi spiace"
+     
      else:
          Calendario.append((inizio, fine, nome, motivo))
          Calendario=sorted(Calendario, key=lambda x: x[0])
