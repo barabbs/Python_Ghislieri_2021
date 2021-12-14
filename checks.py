@@ -67,9 +67,3 @@ def StampaCalendario(giorno):
         DT = DT + delta
     print(CosaPrinto)   
     return
-z = datetime(2020, 2, 12)
-StampaCalendario(z)
-
-    
-
-    
