@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from databaser import PrendiCalendario,AggiungiEventi
 
 
@@ -45,8 +45,31 @@ def Aggiungi(inizio, fine, nome, motivo):
          return "Hai prenotato, congratulazioni"
 
         
-def StampaCalendario():
+def StampaCalendario(giorno):  
+    """Giorno = (year, month, day"""
     Calendario = PrendiCalendario()  # Correggi questa linea
+    L = []
     for Evento in Calendario:
-        pass
+        I = Evento[0]
+        if I.year == giorno.year and I.month == giorno.month and I.day == giorno.day:
+            L.append(Evento)
+    DT = datetime(giorno.year, giorno.month, giorno.day, 0, 0, 0)
+    CosaPrinto = ""
+    delta = timedelta(minutes = 30)
+    for i in range(48):
+        CosaPrinto += DT.strftime("%H:%M")
+        for Evento in L:
+            I = Evento[0]
+            F = Evento[1]
+            if I <= DT and F >= DT + delta:
+                CosaPrinto += '  Prenotante : ' + Evento[2] + ' Per : ' + Evento[3]
+        CosaPrinto += "\n"
+        DT = DT + delta
+    print(CosaPrinto)   
+    return
+z = datetime(2020, 2, 12)
+StampaCalendario(z)
+
+    
+
     
