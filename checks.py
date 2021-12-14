@@ -46,7 +46,7 @@ def Aggiungi(inizio, fine, nome, motivo):
 
         
 def StampaCalendario(giorno):  
-    """Giorno = (year, month, day"""
+    """Giorno = datetime"""
     Calendario = PrendiCalendario()  # Correggi questa linea
     L = []
     for Evento in Calendario:
