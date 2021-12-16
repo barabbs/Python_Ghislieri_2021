@@ -82,9 +82,12 @@ def ListaPersone():
            B=B+[a[2]]
     return B
 
-def Lol(x):
-    B=[]
-    while x>0:
-        B=B+[x]
-        x=x-1
-    return B
+def Elimina(prenotazione):
+    Calendario = PrendiCalendario()
+    for a in Calendario:
+       if a!=prenotazione:
+           pass
+       else:
+           Calendario.remove(a)
+    AggiungiEventi(Calendario)
+           
