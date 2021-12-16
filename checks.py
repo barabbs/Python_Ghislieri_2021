@@ -67,3 +67,6 @@ def StampaCalendario(giorno):
         DT = DT + delta
     print(CosaPrinto)   
     return
+
+def CercaPersona(persona):
+    pass
