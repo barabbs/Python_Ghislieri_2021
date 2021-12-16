@@ -1,5 +1,5 @@
 from datetime import datetime
-from checks import Controllo, Aggiungi, StampaCalendario, CercaPersona
+from checks import Controllo, Aggiungi, StampaCalendario, CercaPersona, ListaPersone
 
 def input_data_ora():
     while True:    
@@ -62,6 +62,13 @@ while True:
             StampaCalendario(data)
             
         elif scelta == "d":
+            print()
+            x = ListaPersone()
+            for i in x:
+                print(i)
             nome = input("inserisci il nominativo > ")
-            CercaPersona(nome)
-            
+            if nome in x:
+                CercaPersona(nome)
+            else:
+                print("Il nome non è nella lista dei prenotati")
+        
