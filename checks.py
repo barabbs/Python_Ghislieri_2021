@@ -87,8 +87,6 @@ def ListaPersone():
 
 def Elimina(prenotazione):
     Calendario = PrendiCalendario()
-    for a in Calendario:
-        if a==prenotazione:
-            Calendario.remove(a)
+    Calendario.remove(prenotazione)
     AggiungiEventi(Calendario) 
            
