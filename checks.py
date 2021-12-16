@@ -73,3 +73,18 @@ def CercaPersona(persona):
     for a in Calendario:
         if a[2]==persona:
             print(a[0].strftime("%d/%m/%Y, %H:%M ") + a[1].strftime("- %H:%M   -   ") + a[3])
+    
+def ListaPersone():
+    Calendario = PrendiCalendario()
+    B=[]
+    for a in Calendario:
+       if a[2] not in B:
+           B=B+[a[2]]
+    return B
+
+def Lol(x):
+    B=[]
+    while x>0:
+        B=B+[x]
+        x=x-1
+    return B
