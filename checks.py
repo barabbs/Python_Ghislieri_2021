@@ -69,4 +69,7 @@ def StampaCalendario(giorno):
     return
 
 def CercaPersona(persona):
-    pass
+    Calendario = PrendiCalendario()
+    for a in Calendario:
+        if a[2]==persona:
+            print(a[0].strftime("%d/%m/%Y, %H:%M ") + a[1].strftime("- %H:%M   -   ") + a[3])
