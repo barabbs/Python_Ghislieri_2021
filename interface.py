@@ -91,3 +91,5 @@ while True:
                     stampa_evento(evento)
                  n=int(input("seleziona il numero della prenotazione da eliminare >"))-1
                  Elimina(eventi_persona[n])
+                 print("Hai eliminato la seguente prenotazione:  ", end="")
+                 stampa_evento(eventi_persona[n])
