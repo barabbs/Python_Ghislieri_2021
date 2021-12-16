@@ -70,9 +70,12 @@ def StampaCalendario(giorno):
 
 def CercaPersona(persona):
     Calendario = PrendiCalendario()
+    B=[]
     for a in Calendario:
         if a[2]==persona:
-            print(a[0].strftime("%d/%m/%Y, %H:%M ") + a[1].strftime("- %H:%M   -   ") + a[3])
+            B=B+[a]
+    return B
+           
     
 def ListaPersone():
     Calendario = PrendiCalendario()
@@ -85,9 +88,7 @@ def ListaPersone():
 def Elimina(prenotazione):
     Calendario = PrendiCalendario()
     for a in Calendario:
-       if a!=prenotazione:
-           pass
-       else:
-           Calendario.remove(a)
-    AggiungiEventi(Calendario)
+        if a==prenotazione:
+            Calendario.remove(a)
+    AggiungiEventi(Calendario) 
            
