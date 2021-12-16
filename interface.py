@@ -1,5 +1,5 @@
 from datetime import datetime
-from checks import Controllo, Aggiungi, StampaCalendario, CercaPersona, ListaPersone
+from checks import Controllo, Aggiungi, StampaCalendario, CercaPersona, ListaPersone, Elimina
 
 def input_data_ora():
     while True:    
@@ -77,6 +77,17 @@ while True:
                 print("Il nome non è nella lista dei prenotati")
         
         elif scelta == "e":
-                   
-            
-            pass
+             print()
+             x = ListaPersone()
+             for i in x:
+                print(i)
+             nome = input("inserisci il nominativo > ")
+             if nome in x:
+                 eventi_persona= CercaPersona(nome)
+                 x = 0
+                 for evento in eventi_persona:
+                    x +=1
+                    print(str(x) +") ", end="") 
+                    stampa_evento(evento)
+                 n=int(input("seleziona il numero della prenotazione da eliminare >"))-1
+                 Elimina(eventi_persona[n])
