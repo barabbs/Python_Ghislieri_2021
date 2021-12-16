@@ -31,9 +31,12 @@ def input_data():
         except ValueError:
             print("inserisci la data nel formato AAAA-MM-GG e l'ora nel formato HH-MM")
     return data
+
+def stampa_evento(evento):
+     print(evento[0].strftime("%m/%d/%Y, %H:%M") + " - " + evento[1].strftime("%H:%M") + " - " + evento[2] + " - " + evento[3])
     
 while True:
-        scelta = input("cosa vuoi fare?\n a)prenotare campo\n b)controllare orari\n c)visualizzare calendario di un giorno\n d)visualizzare prenotazioni di una persona\n q)esci\n>").lower()
+        scelta = input("cosa vuoi fare?\n a)prenotare campo\n b)controllare orari\n c)visualizzare calendario di un giorno\n d)visualizzare prenotazioni di una persona\n e)eliminare prenotazione\n q)esci\n>").lower()
         
         if scelta == "q":
             break
@@ -43,7 +46,7 @@ while True:
             nome = input("come ti chiami? >")
             motivo = input("motivo della prenotazione? >") 
             iniziale,finale=input_data_ora()
-            print(iniziale.strftime("%m/%d/%Y, %H:%M") + " - " + finale.strftime("%H:%M") + " - " + nome + " - " + motivo)
+            stampa_evento((iniziale, finale, nome, motivo))
             conferma = input("confermi questa prenotazione?: \n a)sì\n b)no\n>")
             if conferma.lower()=="a":            
                 x = Aggiungi(iniziale, finale, nome, motivo)
@@ -68,7 +71,12 @@ while True:
                 print(i)
             nome = input("inserisci il nominativo > ")
             if nome in x:
-                CercaPersona(nome)
+                for evento in CercaPersona(nome):
+                    stampa_evento(evento)
             else:
                 print("Il nome non è nella lista dei prenotati")
         
+        elif scelta == "e":
+                   
+            
+            pass
