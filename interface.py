@@ -1,5 +1,5 @@
 from datetime import datetime
-from checks import Controllo, Aggiungi, StampaCalendario
+from checks import Controllo, Aggiungi, StampaCalendario, CercaPersona
 
 def input_data_ora():
     while True:    
@@ -33,18 +33,21 @@ def input_data():
     return data
     
 while True:
-        scelta = input("cosa vuoi fare?\n a)prenotare campo\n b)controllare orari\n c)visualizza calendario\n q)esci\n").lower()
+        scelta = input("cosa vuoi fare?\n a)prenotare campo\n b)controllare orari\n c)visualizzare calendario di un giorno\n d)visualizzare prenotazioni di una persona\n q)esci\n>").lower()
         
         if scelta == "q":
             break
         
         elif scelta == "a": 
             print("Per prenotare a cavallo di due giorni, fai due prenotazioni per i due giorni diversi")
-            nome = input("come ti chiami?")
-            motivo = input("motivo della prenotazione?") 
+            nome = input("come ti chiami? >")
+            motivo = input("motivo della prenotazione? >") 
             iniziale,finale=input_data_ora()
-            x = Aggiungi(iniziale, finale, nome, motivo)
-            print(x)
+            print(iniziale.strftime("%m/%d/%Y, %H:%M") + " - " + finale.strftime("%H:%M") + " - " + nome + " - " + motivo)
+            conferma = input("confermi questa prenotazione?: \n a)sì\n b)no\n>")
+            if conferma.lower()=="a":            
+                x = Aggiungi(iniziale, finale, nome, motivo)
+                print(x)
             
         elif scelta == "b":
             iniziale,finale=input_data_ora()
@@ -53,6 +56,12 @@ while True:
                 print("è libero")
             else:
                 print ("non è libero")
+                
         elif scelta == "c":
             data=input_data()
             StampaCalendario(data)
+            
+        elif scelta == "d":
+            nome = input("inserisci il nominativo > ")
+            CercaPersona(nome)
+            
